@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const msg = params.get("msg") || "alert";
+  const ch = params.get("ch") || "mychannel";
+
+  fetch("https://ntfy.sh/" + ch, {
+    method: "POST",
+    body: msg
+  }).then(r => {
+    if (r.ok) document.body.innerText = "success: " + msg;
+    else document.body.innerText = "failed: " + r.status;
+  }).catch(e => {
+    document.body.innerText = "error: " + e;
+  });
+</script>
+</body>
+</html>
+```
