@@ -5,10 +5,10 @@
   const params = new URLSearchParams(window.location.search);
   const msg = params.get("msg") || "alert";
   const ch = params.get("ch") || "mychannel";
-
+  const body = msg.replace(/\\n/g, "\n");
   fetch("https://ntfy.sh/" + ch, {
     method: "POST",
-    body: msg
+    body: body
   }).then(r => {
     if (r.ok) document.body.innerText = "success: " + msg;
     else document.body.innerText = "failed: " + r.status;
