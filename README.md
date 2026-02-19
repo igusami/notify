@@ -1,0 +1,2 @@
+# notify
+ntfy sending
